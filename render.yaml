@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tcz-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - { key: NODE_ENV, value: production }
+      - { key: MONGODB_URI, sync: false }
+      - { key: JWT_SECRET, generateValue: true }
+      - { key: CLIENT_URL, sync: false }        # e.g. https://your-app.vercel.app
+      - { key: COOKIE_SECURE, value: "true" }
+      - { key: COOKIE_SAMESITE, value: lax }     # lax works because Vercel proxies /api to this service
+      - { key: STRIPE_SECRET_KEY, sync: false }
+      - { key: STRIPE_WEBHOOK_SECRET, sync: false }
+      - { key: DEV_PAYMENTS_ENABLED, value: "false" }

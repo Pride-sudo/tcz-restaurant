@@ -1,0 +1,17 @@
+{
+  "name": "tcz-restaurant",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TCZ Restaurant - full-stack food ordering and inventory platform",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n server,client -c green,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "seed": "npm run seed --prefix server",
+    "create-admin": "npm run create-admin --prefix server",
+    "test": "npm test --prefix server && npm test --prefix client"
+  },
+  "devDependencies": { "concurrently": "^8.2.2" },
+  "engines": { "node": ">=18.18" }
+}
